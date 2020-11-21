@@ -1,11 +1,12 @@
 FROM debian:stable-slim
 
-RUN apt-get -y update && apt-get -y upgrade && apt-get -y install \
+RUN apt-get -y --fix-missing update && apt-get -y --fix-missing upgrade && apt-get -y --fix-missing install \
 apt-transport-https \
 ca-certificates \
 curl \
 gnupg-agent \
-software-properties-common
+software-properties-common \
+openssh-client
 
 RUN curl -fsSL https://download.docker.com/linux/debian/gpg | apt-key add -
 RUN add-apt-repository \
